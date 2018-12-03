@@ -26,7 +26,9 @@ function shuffle(array) {
 }
 
 
-/* set up the event listener for a card. If a card is clicked */
+/* set up the event listener for a card. If a card is clicked
+
+/* Old event listner
 
 const cards = document.querySelectorAll('.card');
 console.log(cards);
@@ -36,7 +38,17 @@ for (card of cards) {
         console.log("this is a card click");
     });
 }
+*/
 
+/* New event listner*/
+
+const deck = document.querySelector('.deck');
+deck.addEventListener('click', event => {
+    const clickTarget = event.target;
+    if (clickTarget.classList.contains('card')) {
+        console.log("this is a card");
+    }
+});
 
 
 
