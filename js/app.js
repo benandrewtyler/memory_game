@@ -90,14 +90,32 @@ function checkForMatch() {
 }
 }
 
+/* Global move variable */
 let moves = 0;
 
-/* Add moves */
+/* Add moves to counter */
 function addMove() {
     moves++;
     const movesText = document.querySelector('.moves');
     movesText.innerHTML = moves;
 }
+
+/* checks score by removing stars */
+function checkScore() {
+    if (moves === 16 || moves === 24)
+    { hideStar();
+    }
+}
+
+/* Star removal */
+function hideStar() {
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+        star.style.display = 'none';
+    }
+}
+hideStar();
+
 
 
 
