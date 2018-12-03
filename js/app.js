@@ -51,7 +51,7 @@ deck.addEventListener('click', event => {
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
         if (toggledCards.length === 2) {
-            console.log('2 cards in array');
+            checkForMatch();
         }
     }
 });
@@ -65,7 +65,26 @@ function toggleCard(clickTarget) {
 /* Add card to array function */
 function addToggleCard(clickTarget) {
         toggledCards.push(clickTarget);
-        console.log('toggledCards');
+        //console.log('toggledCards');
+}
+
+/* Checking for 2 matching cards */
+function checkForMatch() {
+    if (
+        toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className
+    ) {
+        toggledCards[0].classList.toggle('match');
+        toggledCards[1].classList.toggle('match');
+        toggledCards = [];
+        console.log('Match');
+    }  else {
+        console.log('Not a match');
+        setTimeout(() => {
+        toggleCard(toggledCards[0]);
+        toggleCard(toggledCards[1]);
+        toggledCards = [];
+    }, 1000);
+}
 }
 
 
