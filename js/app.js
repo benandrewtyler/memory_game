@@ -41,18 +41,20 @@ for (card of cards) {
 */
 
 /* Storing cards in an array*/
-let toggleCards = [];
+let toggledCards = [];
 
 /* New event listner*/
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
-    if (clickTarget.classList.contains('card')) {
+    if (clickTarget.classList.contains('card') && toggledCards.length < 2) {
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
+        if (toggledCards.length === 2) {
+            console.log('2 cards in array');
+        }
     }
 });
-
 
 /* Toggle card function */
 function toggleCard(clickTarget) {
@@ -62,8 +64,8 @@ function toggleCard(clickTarget) {
 
 /* Add card to array function */
 function addToggleCard(clickTarget) {
-        toggleCards.push(clickTarget);
-        console.log(toggleCards);
+        toggledCards.push(clickTarget);
+        console.log('toggledCards');
 }
 
 
