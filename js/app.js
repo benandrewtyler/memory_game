@@ -40,13 +40,14 @@ for (card of cards) {
 }
 */
 
-/* New event listner*/
+/* New event listner - With toggle*/
 
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (clickTarget.classList.contains('card')) {
-        console.log("this is a card");
+        clickTarget.classList.toggle('open');
+        clickTarget.classList.toggle('show');
     }
 });
 
