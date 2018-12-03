@@ -47,11 +47,11 @@ let toggledCards = [];
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
-    if (clickTarget.classList.contains('card') && toggledCards.length < 2) {
+    if (clickTarget.classList.contains('card') && toggledCards.length < 2 && !toggledCards.includes(clickTarget)) {
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
         if (toggledCards.length === 2) {
-            checkForMatch();
+            checkForMatch(clickTarget);
         }
     }
 });
@@ -68,7 +68,7 @@ function addToggleCard(clickTarget) {
         //console.log('toggledCards');
 }
 
-/* Checking for 2 matching cards */
+/* Checking for 2 matching cards and timeout */
 function checkForMatch() {
     if (
         toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className
@@ -76,9 +76,9 @@ function checkForMatch() {
         toggledCards[0].classList.toggle('match');
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
-        console.log('Match');
+        //console.log('Match');
     }  else {
-        console.log('Not a match');
+        //console.log('Not a match');
         setTimeout(() => {
         toggleCard(toggledCards[0]);
         toggleCard(toggledCards[1]);
