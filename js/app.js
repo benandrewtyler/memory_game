@@ -1,3 +1,13 @@
+/* Move global variable */
+let moves = 0;
+
+/* Clock global variables */
+let clockOff = true;
+let time = 0;
+let clockId;
+
+let matched = 0;
+
 const deck = document.querySelector('.deck');
 
 
@@ -28,42 +38,29 @@ function shuffle(array) {
 }
 
 
-/* Old event listner*/
-/*
-const cards = document.querySelectorAll('.card');
-console.log(cards);
-
-for (card of cards) {
-    card.addEventListener('click', () => {
-        console.log("this is a card click");
-    });
-}
-*/
-
 /* Storing cards in an array*/
 let toggledCards = [];
 
 /* New event listner*/
 
 deck.addEventListener('click', event => {
-    const clickTarget = event.target
-        if (isClickValid(clickTarget)) {
-            if (clockOff) {
-                startClock();
-                clockOff = false;
-            }
-      }
-    if (clickTarget.classList.contains('card') && !clickTarget.classList.contains('match') && toggledCards.length < 2 && !toggledCards.includes(clickTarget)) {
-        toggleCard(clickTarget);
-        addToggleCard(clickTarget);
-        if (toggledCards.length === 2) {
-            checkForMatch(clickTarget);
-            addMove();
-            checkScore();
-        }
-    }
+	const clickTarget = event.target; 
+	if (isClickValid(clickTarget)) {
+		if (isClickValid(clickTarget)) {
+			if (clockOff) {
+				startClock();
+				clockOff = false;
+			}
+		}
+		toggleCard(clickTarget);
+		addToggleCard(clickTarget);
+		if (openCardList.length === 2) {
+			checkForMatch(clickTarget);
+			addMove();
+			checkScore();
+		}
+	}
 });
-
 
 /* Click validity function */
 function isClickValid(clickTarget) {
@@ -84,20 +81,20 @@ function toggleCard(clickTarget) {
 /* Add card to array function */
 function addToggleCard(clickTarget) {
         toggledCards.push(clickTarget);
-        //console.log('toggledCards');
 }
 
 /* Checking for 2 matching cards and timeout */
 function checkForMatch() {
     if (
-        toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className
+        toggledCards[0].firstElementChild.className ===
+        toggledCards[1].firstElementChild.className
     ) {
         toggledCards[0].classList.toggle('match');
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
-        //console.log('Match');
+        matched++;
+        checkWin();
     }  else {
-        //console.log('Not a match');
         setTimeout(() => {
         toggleCard(toggledCards[0]);
         toggleCard(toggledCards[1]);
@@ -105,14 +102,6 @@ function checkForMatch() {
     }, 1000);
 }
 }
-
-/* Move global variable */
-let moves = 0;
-
-/* Clock global variables */
-let clockOff = true;
-let time = 0;
-let clockId;
 
 /* Add moves to counter */
 function addMove() {
@@ -133,7 +122,6 @@ function startClock() {
     clockId = setInterval(() => {
         time++;
     displayTime();
-    //consol.log(time);
     }, 1000);
 }
 
@@ -174,15 +162,13 @@ function toggleModal() {
     modal.classList.toggle('hide');
 }
 
-//Modal test
+/*Modal test
 time = 121;
 displayTime();
 moves = 16;
 checkScore();
-
-
 writeModalStats();
-toggleModal();
+toggleModal();*/
 
 function writeModalStats() {
     const timeStat = document.querySelector('.modal_time');
@@ -213,11 +199,13 @@ document.querySelector('.modal_cancel').addEventListener('click', () => {
     toggleModal();
 });
 
-document.querySelector('.modal_replay').addEventListener('click', resetGame);
-
 document.querySelector('.restart').addEventListener('click', resetGame);
 
+document.querySelector('.modal_replay').addEventListener('click', replayGame);
+
+
 function resetGame() {
+    openCardList = [];
     resetClockAndTime();
     resetMoves();
     resetStars();
@@ -241,6 +229,33 @@ function resetStars() {
     const starList = document.querySelectorAll('.stars li');
     for (star of starList) {
       star.style.display = 'inline';
+    }
+}
+
+
+function checkWin() {
+
+	matched += 1;
+	if (matched === 8) {
+		gameOver();
+	}
+}
+
+function gameOver() {
+	stopClock();
+	writeReportStats ();
+	toggleReport();
+	}
+
+function replayGame() {
+    resetGame();
+    toggleModal();
+}
+
+function resetCards() {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card';
     }
 }
 
