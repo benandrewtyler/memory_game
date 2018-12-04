@@ -112,6 +112,7 @@ let moves = 0;
 /* Clock global variables */
 let clockOff = true;
 let time = 0;
+let clockId;
 
 /* Add moves to counter */
 function addMove() {
@@ -132,7 +133,13 @@ function startClock() {
     clockId = setInterval(() => {
         time++;
     displayTime();
+    //consol.log(time);
     }, 1000);
+}
+
+/* Clock stop function */
+function stopClock() {
+    clearInterval(clockId);
 }
 
 /* Clock display function */
