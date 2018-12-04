@@ -46,7 +46,13 @@ let toggledCards = [];
 /* New event listner*/
 
 deck.addEventListener('click', event => {
-    const clickTarget = event.target;
+    const clickTarget = event.target
+        if (isClickValid(clickTarget)) {
+            if (clockOff) {
+                startClock();
+                clockOff = false;
+            }
+      }
     if (clickTarget.classList.contains('card') && !clickTarget.classList.contains('match') && toggledCards.length < 2 && !toggledCards.includes(clickTarget)) {
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
@@ -57,6 +63,17 @@ deck.addEventListener('click', event => {
         }
     }
 });
+
+
+/* Click validity function */
+function isClickValid(clickTarget) {
+    return (
+        clickTarget.classList.contains('card') &&
+        !clickTarget.classList.contains('match') &&
+        toggledCards.length < 2 &&
+        !toggledCards.includes(clickTarget)
+     );
+  }
 
 /* Toggle card function */
 function toggleCard(clickTarget) {
@@ -89,8 +106,12 @@ function checkForMatch() {
 }
 }
 
-/* Global move variable */
+/* Move global variable */
 let moves = 0;
+
+/* Clock global variables */
+let clockOff = true;
+let time = 0;
 
 /* Add moves to counter */
 function addMove() {
@@ -104,6 +125,21 @@ function checkScore() {
     if (moves === 16 || moves === 24)
     { hideStar();
     }
+}
+
+/* Clock start function */
+function startClock() {
+    let clockId = setInterval(() => {
+        time++;
+        console.log(time);
+    }, 1000);
+}
+
+/* Clock display function */
+function displayTime() {
+    const clock = document.querySelector('.clock');
+    console.log(clock);
+    clock.innerHTML = time;
 }
 
 /* Star removal */
