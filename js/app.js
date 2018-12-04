@@ -28,8 +28,6 @@ function shuffle(array) {
 }
 
 
-
-
 /* Old event listner*/
 /*
 const cards = document.querySelectorAll('.card');
@@ -55,6 +53,7 @@ deck.addEventListener('click', event => {
         if (toggledCards.length === 2) {
             checkForMatch(clickTarget);
             addMove();
+            checkScore();
         }
     }
 });
@@ -117,7 +116,6 @@ function hideStar() {
         }
     }
 }
-hideStar();
 
 
 
