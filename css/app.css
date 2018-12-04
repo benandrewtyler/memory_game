@@ -115,14 +115,13 @@ h1 {
     height: 100%;
     width: 100%;
     background:  rgba(0, 0, 0, 0.438);
-    z-index: 1000;  /*fixed the open show card bleed*/
+    z-index: 1000;
 }
 
 .modal_body {
     position: relative;
     transform: translate(-50%, -70%);
     width: 400px;
-   /* height: 400px; Removed */
     top: 50%;
     left: 50%;
     background: #ffffff;
@@ -160,4 +159,8 @@ h1 {
 .modal_button {
     width: 60px;
     height: 30px;
+}
+
+.hide {
+    display: none;
 }

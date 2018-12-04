@@ -168,6 +168,46 @@ function hideStar() {
     }
 }
 
+/* Modal toggle */
+function toggleModal() {
+    const modal = document.querySelector('.modal_background');
+    modal.classList.toggle('hide');
+}
+toggleModal()
+toggleModal()
+
+/*Modal test
+time = 121;
+displayTime();
+moves = 16;
+checkScore();
+
+
+writeModalStats();
+toggleModal()*/
+
+function writeModalStats() {
+    const timeStats = document.querySelector('.modal_time');
+    const clockTime = document.querySelector('.clock').innerHTML;
+    const movesStat = document.querySelector('.modal_moves');
+    const starsStat = document.querySelector('.modal_stars');
+    const stars = getStars();
+
+    timeStat.innerHTML = `Time = ${clockTime}`;
+    movesStat.innerHTML = `Moves = ${moves}`;
+    starsStat.innerHTML = `Stars = ${stars}`;
+}
+
+function getStars() {
+    stars = document.querySelectorAll(".stars li");
+    starCount = 0;
+    for (star of stars) {
+      if (star.style.display !== "none") {
+        starCount++;
+      }
+    }
+    return starCount;
+  }
 
 
 
