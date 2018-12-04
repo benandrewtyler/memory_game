@@ -213,8 +213,36 @@ document.querySelector('.modal_cancel').addEventListener('click', () => {
     toggleModal();
 });
 
-document.querySelector('.modal_replay').addEventListener('click', replayGame);
-console.log('replay');
+document.querySelector('.modal_replay').addEventListener('click', resetGame);
+
+document.querySelector('.restart').addEventListener('click', resetGame);
+
+function resetGame() {
+    resetClockAndTime();
+    resetMoves();
+    resetStars();
+    shuffleDeck();
+}
+
+function resetClockAndTime() {
+    stopClock();
+    clockOff = true;
+    time = 0;
+    displayTime();
+}
+
+function resetMoves() {
+    moves = 0;
+    document.querySelector('.moves').innerHTML = moves;
+}
+
+function resetStars() {
+    stars = 0;
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+      star.style.display = 'inline';
+    }
+}
 
 
 
