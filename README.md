@@ -38,7 +38,6 @@ A timer is started from the first card turn and the total time is logged when yo
 When all the pairs have been found.
 
 ## List of files
---------------------------------
 
 * documentHead
 * header
@@ -71,7 +70,6 @@ When all the pairs have been found.
 
 
 # USEFUL RESOURCES
-----------------
 
 In the following links you will find resources that i utilised whilst building the memory game:
 * [W3C's index of HTML5](https://www.w3.org/TR/html5/)
