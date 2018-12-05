@@ -4,7 +4,7 @@
 
 * [Overview](#overview)
 * [Instructions](#instructions)
-* [List of files](#listoffiles)
+* [List of files](#list of files)
 * [Contributions](#contributions)
 
 ## Overview
