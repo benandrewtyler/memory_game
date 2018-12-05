@@ -1,6 +1,4 @@
-/* Storing cards in an array*/
 let toggledCards = [];
-
 const deck = document.querySelector('.deck');
 let moves = 0;
 let clockOff = true;
@@ -33,7 +31,7 @@ function shuffle(array) {
     return array;
 }
 
-/* New event listner*/
+/* Event listner for card click*/
 deck.addEventListener('click', event => {
 	const clickTarget = event.target; 
 	if (isClickValid(clickTarget)) {
@@ -63,18 +61,18 @@ function isClickValid(clickTarget) {
      );
   }
 
-/* Toggle card function */
+/* Turns cards over */
 function toggleCard(clickTarget) {
         clickTarget.classList.toggle('open');
         clickTarget.classList.toggle('show');
 }
 
-/* Add card to array function */
+/* Add card to card array */
 function addToggleCard(clickTarget) {
         toggledCards.push(clickTarget);
 }
 
-/* Checking for 2 matching cards and timeout */
+/* Checking for 2 matching cards, increments the match constant and checks for win condition*/
 function checkForMatch() {
     if (
         toggledCards[0].firstElementChild.className ===
@@ -96,7 +94,7 @@ function checkForMatch() {
 }
 }
 
-/* Add moves to counter */
+/* Add moves to move counter */
 function addMove() {
     moves++;
     const movesText = document.querySelector('.moves');
@@ -110,7 +108,19 @@ function checkScore() {
     }
 }
 
-/* Star removal */
+function getStars() {
+    stars = document.querySelectorAll(".stars li");
+    starCount = 0;
+    for (star of stars) {
+      if (star.style.display !== "none") {
+        starCount++;
+      }
+    }
+    console.log(starCount);
+    return starCount;
+}
+
+/* Star css removal */
 function hideStar() {
     const starList = document.querySelectorAll('.stars li');
     for (star of starList) {
@@ -156,14 +166,7 @@ function toggleModal() {
     modal.classList.toggle('show');
 }
 
-/*Modal test
-time = 121;
-displayTime();
-moves = 16;
-checkScore();
-writeModalStats();
-toggleModal();*/
-
+/* Writes time, moves and stars to modal */
 function writeModalStats() {
     const timeStat = document.querySelector('.modal_time');
     const clockTime = document.querySelector('.clock').innerHTML;
@@ -174,18 +177,6 @@ function writeModalStats() {
     timeStat.innerHTML = `Time = ${clockTime}`;
     movesStat.innerHTML = `Moves = ${moves}`;
     starsStat.innerHTML = `Stars = ${stars}`;
-}
-
-function getStars() {
-    stars = document.querySelectorAll(".stars li");
-    starCount = 0;
-    for (star of stars) {
-      if (star.style.display !== "none") {
-        starCount++;
-      }
-    }
-    console.log(starCount);
-    return starCount;
 }
 
 /* Modal buttons */
@@ -207,7 +198,6 @@ document.querySelector(".modal_replay").addEventListener("click", () => {
 document.querySelector('.restart').addEventListener('click', resetGame);
 
 function resetGame() {
-    //openCardList = [];
     resetClockAndTime();
     resetMoves();
     resetStars();
@@ -252,5 +242,10 @@ function resetCards() {
     }
 }
 
-
-
+/*Modal test
+time = 121;
+displayTime();
+moves = 16;
+checkScore();
+writeModalStats();
+toggleModal();*/
