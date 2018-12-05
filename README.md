@@ -3,7 +3,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [Instructions](## Instructions)
+* [Instructions](##Instructions)
 * [List of files](#listoffiles)
 * [Useful resources](#usefulresources)
 * [Contributions](#contributions)
