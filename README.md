@@ -43,19 +43,15 @@ When all the pairs have been found.
 ## List of files
 
 ### CSS
-
 * app.css
 
 ### JS
-
 * app.js
 
 ### HTML
-
 * geometry2.png
 
 ### HTML
-
 * index.html
 
 ## Useful resources
