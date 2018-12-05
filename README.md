@@ -39,19 +39,6 @@ When all the pairs have been found.
 
 ## List of files
 
-* documentHead
-* header
-* footer
-* error
-* homepage
-* newRequestPage
-* requestListPage
-* requestPage
-* articlePage (Only needed if using a knowledge base)
-* categoryPage (Only needed if using a knowledge base)
-* SearchPage (Only needed if using a knowledge base)
-* sectionPage (Only needed if using a knowledge base)
-
 ### CSS
 
 * app.css
@@ -67,7 +54,6 @@ When all the pairs have been found.
 ### HTML
 
 * index.html
-
 
 ## USEFUL RESOURCES
 
