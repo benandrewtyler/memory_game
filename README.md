@@ -18,13 +18,13 @@ Below is an overview of what is in scope of this project and the linked manual a
 Concentration, also known as Memory, is a great family card game. It's easy to make the game easier or more difficult, and younger players tend to be able to compete with older players because they generally excel at memory-based games.
 
 
-* Players
+# Players
 1 player.
 
-* Deck
+# Deck
 16 card deck consisting of 8 different pairs of symbols.
 
-* Goal
+# Goal
 To match all pairs of cards.
 
 * Gameplay
