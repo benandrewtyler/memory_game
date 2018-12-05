@@ -1,14 +1,13 @@
-/* Move global variable */
-let moves = 0;
+/* Storing cards in an array*/
+let toggledCards = [];
 
-/* Clock global variables */
+const deck = document.querySelector('.deck');
+let moves = 0;
 let clockOff = true;
 let time = 0;
 let clockId;
-
 let matched = 0;
-
-const deck = document.querySelector('.deck');
+const TOTAL_PAIRS = 8;
 
 
 /*Shuffling the cards*/
@@ -37,12 +36,7 @@ function shuffle(array) {
     return array;
 }
 
-
-/* Storing cards in an array*/
-let toggledCards = [];
-
 /* New event listner*/
-
 deck.addEventListener('click', event => {
 	const clickTarget = event.target; 
 	if (isClickValid(clickTarget)) {
@@ -54,7 +48,7 @@ deck.addEventListener('click', event => {
 		}
 		toggleCard(clickTarget);
 		addToggleCard(clickTarget);
-		if (openCardList.length === 2) {
+		if (toggledCards.length === 2) {
 			checkForMatch(clickTarget);
 			addMove();
 			checkScore();
@@ -93,7 +87,6 @@ function checkForMatch() {
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
         matched++;
-        checkWin();
     }  else {
         setTimeout(() => {
         toggleCard(toggledCards[0]);
@@ -205,7 +198,7 @@ document.querySelector('.modal_replay').addEventListener('click', replayGame);
 
 
 function resetGame() {
-    openCardList = [];
+    //openCardList = [];
     resetClockAndTime();
     resetMoves();
     resetStars();
@@ -233,18 +226,14 @@ function resetStars() {
 }
 
 
-function checkWin() {
-
-	matched += 1;
-	if (matched === 8) {
-		gameOver();
-	}
+if (matched === TOTAL_PAIRS) {
+	gameOver();
 }
 
 function gameOver() {
 	stopClock();
 	writeReportStats ();
-	toggleReport();
+    toggleModal();
 	}
 
 function replayGame() {
