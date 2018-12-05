@@ -5,6 +5,7 @@
 * [Overview](#overview)
 * [Instructions](#instructions)
 * [List of files](#listoffiles)
+* [Useful resources](#usefulresources)
 * [Contributions](#contributions)
 
 ## Overview
@@ -37,3 +38,49 @@ A timer is started from the first card turn and the total time is logged when yo
 When all the pairs have been found.
 
 ## List of files
+--------------------------------
+
+* documentHead
+* header
+* footer
+* error
+* homepage
+* newRequestPage
+* requestListPage
+* requestPage
+* articlePage (Only needed if using a knowledge base)
+* categoryPage (Only needed if using a knowledge base)
+* SearchPage (Only needed if using a knowledge base)
+* sectionPage (Only needed if using a knowledge base)
+
+### CSS
+
+* app.css
+
+### JS
+
+* app.js
+
+### HTML
+
+* geometry2.png
+
+### HTML
+
+* index.html
+
+
+# USEFUL RESOURCES
+----------------
+
+In the following links you will find resources that i utilised whilst building the memory game:
+* [W3C's index of HTML5](https://www.w3.org/TR/html5/)
+* [W3School's JS tutorials](https://www.w3schools.com/js/)
+* [Udacity git repo](https://github.com/udacity/fend-project-memory-game)
+* [MDN's javascript documentation](https://developer.mozilla.org/bm/docs/Web/JavaScript)
+
+Any suggestions of additional resources that would be useful to the community
+would be warmly welcome and greatly appreciated.
+Feel free to add your suggestions by creating a new pull request
+with the component "Documentation" with your
+comment.
