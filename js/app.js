@@ -8,23 +8,20 @@ let time = 0;
 let clockId;
 let matched = 0;
 const TOTAL_PAIRS = 8;
-
+const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+const shuffleCards = shuffle(cardsToShuffle);
 
 /*Shuffling the cards*/
 function shuffleDeck() {
-    const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
-    const shuffleCards = shuffle(cardsToShuffle);
     for (card of shuffleCards) {
         deck.appendChild(card);
+        resetCards();
     }
 }
-shuffleDeck();
-
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -87,6 +84,9 @@ function checkForMatch() {
         toggledCards[1].classList.toggle('match');
         toggledCards = [];
         matched++;
+        if (matched === TOTAL_PAIRS) {
+	    gameOver();
+    }
     }  else {
         setTimeout(() => {
         toggleCard(toggledCards[0]);
@@ -107,6 +107,17 @@ function addMove() {
 function checkScore() {
     if (moves === 16 || moves === 24)
     { hideStar();
+    }
+}
+
+/* Star removal */
+function hideStar() {
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+        if (star.style.display !== 'none') {
+        star.style.display = 'none';
+        break;
+        }
     }
 }
 
@@ -138,21 +149,11 @@ function displayTime() {
 
 }
 
-/* Star removal */
-function hideStar() {
-    const starList = document.querySelectorAll('.stars li');
-    for (star of starList) {
-        if (star.style.display !== 'none') {
-        star.style.display = 'none';
-        break;
-        }
-    }
-}
-
 /* Modal toggle */
 function toggleModal() {
     const modal = document.querySelector('.modal_background');
     modal.classList.toggle('hide');
+    modal.classList.toggle('show');
 }
 
 /*Modal test
@@ -189,13 +190,21 @@ function getStars() {
 
 /* Modal buttons */
 document.querySelector('.modal_cancel').addEventListener('click', () => {
-    toggleModal();
+    toggleModal('hide');
 });
 
+document.querySelector('.modal_close').addEventListener('click', () => {
+    toggleModal('hide');
+});
+
+document.querySelector(".modal_replay").addEventListener("click", () => {
+  toggleModal("hide");
+  shuffleDeck();
+  resetGame();
+});
+
+/* Restart button */
 document.querySelector('.restart').addEventListener('click', resetGame);
-
-document.querySelector('.modal_replay').addEventListener('click', replayGame);
-
 
 function resetGame() {
     //openCardList = [];
@@ -225,14 +234,9 @@ function resetStars() {
     }
 }
 
-
-if (matched === TOTAL_PAIRS) {
-	gameOver();
-}
-
 function gameOver() {
 	stopClock();
-	writeReportStats ();
+	writeModalStats ();
     toggleModal();
 	}
 
