@@ -1,20 +1,39 @@
-# Memory Game Project
+# FEND course Memory Game Project
 
 ## Table of Contents
 
+* [Overview](#overview)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [List of files](#listoffiles)
+* [Contributions](#contributions)
+
+## Overview
+
+This readme is to give instruction on how to play the Memory game, list the files used in creating my Memory game, credit contributers, list useful resources and share future planned developments.
+The project started with an initial template provided by Udacity consisting of a flat file UI and a card shuffle function [Udacity git repo](https://github.com/udacity/fend-project-memory-game) 
+Below is an overview of what is in scope of this project and the linked manual and what is not:
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Concentration, also known as Memory, is a great family card game. It's easy to make the game easier or more difficult, and younger players tend to be able to compete with older players because they generally excel at memory-based games.
 
-To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+#Players
+1 player.
 
-## Contributing
+#Deck
+16 card deck consisting of 8 different pairs of symbols.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+#Goal
+To match all pairs of cards.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+#Gameplay
+On each turn, the player turns over two cards (one at a time) they stay turned over if they match symbols, if not, they turn back face down. The player then takes another turn.
+
+#Scoring
+A timer is started from the first card turn and the total time is logged when you match all of the pairs. Compete with yourself by trying to get a faster time in a second game. You also lose stars for more turns taken, between 16 and 24 you lose 1 star (bringing you down to 2), over 24 you lose another. your turn count is also tracked
+
+#Winning
+When all the pairs have been found.
+
+## List of files
