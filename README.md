@@ -3,9 +3,9 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [Instructions](##Instructions)
-* [List of files](#listoffiles)
-* [Useful resources](#usefulresources)
+* [Instructions](#Instructions)
+* [List of files](#list-of-files)
+* [Useful resources](#useful-resources)
 * [Contributions](#contributions)
 
 ## Overview
